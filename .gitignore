@@ -50,6 +50,8 @@ subscribes/*.yaml
 rule_templates/*.yaml
 !rule_templates/fake_ip__v3.yaml
 !rule_templates/redirhost__v3.yaml
+# 这个模板是手写维护的默认模板（已脱敏，不含内网域名/私网 IP），需要随仓库分发
+!rule_templates/Aethersailor_标准_推荐使用_v3.yaml
 
 # 本地构建产物：改用 GitHub Release 资产分发，不再跟踪根目录 server 二进制
 /server
