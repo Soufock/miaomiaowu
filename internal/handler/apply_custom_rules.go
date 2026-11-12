@@ -565,6 +565,15 @@ func applyDNSRuleToNode(docNode *yaml.Node, rule storage.CustomRule) {
 		// Otherwise, replace with the entire content
 		setFieldNode(docNode, "dns", contentNode)
 	}
+
+	// hosts 是顶层键，不属于 dns 子树。用户习惯把 dns 和 hosts 一起粘进 DNS 规则
+	// （dns.use-hosts 也要配合 hosts 才生效），这里顺带覆盖 hosts，避免静默丢弃。
+	// 其它顶层键（proxies/rules 等）仍交给对应的规则类型处理，不在 DNS 规则里动。
+	if contentNode.Kind == yaml.MappingNode {
+		if hostsNode, _ := findFieldNode(contentNode, "hosts"); hostsNode != nil {
+			setFieldNode(docNode, "hosts", hostsNode)
+		}
+	}
 }
 
 // applyRulesRuleToNode applies rules to the YAML node
