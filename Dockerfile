@@ -87,11 +87,11 @@ RUN chown -R appuser:appuser /app/server /app/rule_templates
 VOLUME ["/app/data", "/app/subscribes"]
 
 # Expose port
-EXPOSE 8080
+EXPOSE 8181
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8181/ || exit 1
 
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]

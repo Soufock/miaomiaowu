@@ -504,7 +504,7 @@ func startDatabaseLogCleanup(ctx context.Context, repo *storage.TrafficRepositor
 func getAddr(repo *storage.TrafficRepository) string {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "8181"
 	}
 
 	// 显式指定监听地址的 env 优先(HOST / BIND_HOST),给了就照办、不再看开关。

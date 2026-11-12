@@ -8,7 +8,7 @@ docker build -t miaomiaowu-test:latest .
 
 echo ""
 echo "Testing if rule_templates directory is created on startup..."
-docker run --rm -d --name miaomiaowu-test -p 8081:8080 miaomiaowu-test:latest
+docker run --rm -d --name miaomiaowu-test -p 8081:8181 miaomiaowu-test:latest
 
 # Wait for container to start
 sleep 5

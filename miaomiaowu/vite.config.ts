@@ -32,12 +32,12 @@ export default defineConfig({
     proxy: {
       // API 代理到后端（仅开发环境生效）
       '/api': {
-        target: process.env.VITE_API_URL || 'http://localhost:8080',
+        target: process.env.VITE_API_URL || 'http://localhost:8181',
         changeOrigin: true,
       },
       // 临时订阅路径代理到后端（仅开发环境生效）
       '/t/': {
-        target: process.env.VITE_API_URL || 'http://localhost:8080',
+        target: process.env.VITE_API_URL || 'http://localhost:8181',
         changeOrigin: true,
       },
     },

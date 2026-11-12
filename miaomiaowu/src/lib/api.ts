@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/auth-store'
 const AUTH_HEADER = 'MM-Authorization'
 const rawConfiguredBaseURL = (import.meta.env.VITE_API_BASE_URL ?? '').trim()
 const configuredBaseURL =
-  import.meta.env.PROD && rawConfiguredBaseURL === 'http://localhost:8080'
+  import.meta.env.PROD && rawConfiguredBaseURL === 'http://localhost:8181'
     ? ''
     : rawConfiguredBaseURL
 
@@ -16,7 +16,7 @@ export const api = axios.create({
 if (!api.defaults.baseURL && typeof window !== 'undefined' && window.location) {
   const { protocol, host, hostname } = window.location
   if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1') {
-    api.defaults.baseURL = `${protocol}//${hostname}:8080`
+    api.defaults.baseURL = `${protocol}//${hostname}:8181`
   } else {
     api.defaults.baseURL = `${protocol}//${host}`
   }

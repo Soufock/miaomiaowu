@@ -44,7 +44,7 @@
 docker run -d \
   --user root \
   --name miaomiaowu \
-  -p 8080:8080 \
+  -p 8181:8181 \
   -v $(pwd)/mmw-data:/app/data \
   -v $(pwd)/subscribes:/app/subscribes \
   -v $(pwd)/rule_templates:/app/rule_templates \
@@ -52,7 +52,7 @@ docker run -d \
 ```
 
 参数说明：
-- `-p 8080:8080` 将容器端口映射到宿主机，按需调整。
+- `-p 8181:8181` 将容器端口映射到宿主机，按需调整。
 - `-v ./mmw-data:/app/data` 持久化数据库文件，防止容器重建时数据丢失。
 - `-v ./subscribes:/app/subscribes` 订阅文件存放目录
 - `-v ./rule_templates:/app/rule_templates` 规则模板存放目录
@@ -79,10 +79,10 @@ services:
     restart: unless-stopped
     user: root
     environment:
-      - PORT=8080
+      - PORT=8181
 
     ports:
-      - "8080:8080"
+      - "8181:8181"
 
     volumes:
       - ./data:/app/data
@@ -90,7 +90,7 @@ services:
       - ./rule_templates:/app/rule_templates
 
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8181/"]
       interval: 30s
       timeout: 3s
       start_period: 5s
@@ -99,7 +99,7 @@ services:
 ```
 
 参数说明：
-- `-p 8080:8080` 将容器端口映射到宿主机，按需调整。
+- `-p 8181:8181` 将容器端口映射到宿主机，按需调整。
 - 其他可用环境变量见下文「环境变量」一节，可通过 `-e` 继续添加。
 
 映射目录说明:
@@ -142,7 +142,7 @@ docker-compose down
 
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
-| `PORT` | `8080` | 监听端口 |
+| `PORT` | `8181` | 监听端口 |
 | `HOST`（或 `BIND_HOST`） | 空 | 监听地址，设了就按它监听，不再看「仅本机访问」开关 |
 | `FORCE_PUBLIC_ACCESS` | 空 | 设为 `1` 时强制恢复公网监听，用于开启「仅本机访问」后把自己锁在外面的情况；Docker 内忽略 |
 | `ALLOWED_ORIGINS`（或 `FRONTEND_ORIGIN`） | `*` | CORS 允许的来源，逗号分隔 |
@@ -168,7 +168,7 @@ sudo cp -rf /var/lib/traffic-info/* /etc/mmw/
 curl -sL https://raw.githubusercontent.com/Soufock/miaomiaowu/main/install.sh | bash
 ```
 
-安装完成后，服务将自动启动，访问 `http://服务器IP:8080` 即可。
+安装完成后，服务将自动启动，访问 `http://服务器IP:8181` 即可。
 
 **更新到最新版本：**
 ```bash

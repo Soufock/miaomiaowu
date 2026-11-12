@@ -169,7 +169,7 @@ function SubscriptionPage() {
     api.defaults.baseURL ??
     (typeof window !== 'undefined'
       ? `${window.location.protocol}//${window.location.host}`
-      : 'http://localhost:8080')
+      : 'http://localhost:8181')
 
   const buildSubscriptionURL = (filename: string, fileShortCode: string | undefined, customShortCode: string | undefined, clientType?: string) => {
     // Use custom short code or file short code + user short code for composite short link

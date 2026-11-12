@@ -46,15 +46,15 @@ install() {
     echo ""
     if [ -t 0 ]; then
         # 交互式环境
-        read -p "请输入端口号（默认 8080，直接回车使用默认值）: " PORT_INPUT
+        read -p "请输入端口号（默认 8181，直接回车使用默认值）: " PORT_INPUT
         if [ -z "$PORT_INPUT" ]; then
-            PORT=8080
+            PORT=8181
         else
             PORT=$PORT_INPUT
         fi
     else
         # 非交互式环境，使用环境变量或默认值
-        PORT=${PORT:-8080}
+        PORT=${PORT:-8181}
         echo "使用端口: $PORT"
     fi
 
@@ -139,16 +139,16 @@ update() {
                 PORT=$PORT_INPUT
             fi
         else
-            read -p "请输入端口号（默认 8080，直接回车使用默认值）: " PORT_INPUT
+            read -p "请输入端口号（默认 8181，直接回车使用默认值）: " PORT_INPUT
             if [ -z "$PORT_INPUT" ]; then
-                PORT=8080
+                PORT=8181
             else
                 PORT=$PORT_INPUT
             fi
         fi
     else
         # 非交互式环境，使用环境变量或默认值
-        PORT=${PORT:-${SAVED_PORT:-8080}}
+        PORT=${PORT:-${SAVED_PORT:-8181}}
         echo "使用端口: $PORT"
     fi
 
