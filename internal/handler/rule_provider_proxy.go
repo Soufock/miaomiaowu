@@ -17,7 +17,7 @@ import (
 	"miaomiaowu/internal/storage"
 )
 
-// 规则集抓取的 GitHub 加速(iluobei/miaomiaowu#125)。
+// 规则集抓取的 GitHub 加速(Soufock/miaomiaowu#125)。
 //
 // 主控在境内时,规则集最常见的来源 raw.githubusercontent.com 经常连不上或超时。这里给规则集抓取
 // 加一个可选的「代理」:开了之后,GitHub 上的地址改从加速站取。加速站有两种写法 ——

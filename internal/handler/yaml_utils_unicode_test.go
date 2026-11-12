@@ -32,7 +32,7 @@ func yamlData(t *testing.T, text string) any {
 	return v
 }
 
-// iluobei/miaomiaowu#126:规则里同时有反斜杠和 emoji 时,每写回一次反斜杠翻一倍。
+// Soufock/miaomiaowu#126:规则里同时有反斜杠和 emoji 时,每写回一次反斜杠翻一倍。
 func TestRemoveUnicodeEscapeQuotesKeepsBackslashes(t *testing.T) {
 	text := "rules:\n  - PROCESS-NAME-REGEX,^(foo)\\.exe$,DIRECT\n  - PROCESS-NAME-REGEX,^(foo)\\.exe$,🔒 国内服务\n"
 	want := yamlData(t, text)

@@ -55,7 +55,7 @@ func MarshalWithIndent(v interface{}) ([]byte, error) {
 //
 // 最后把结果整个再解析一遍,和原文逐节点比对:只要有一处不同就退回「全部保留引号」的写法,
 // 再不同就原文返回。所以这个函数改不了 YAML 的数据 —— 以前是拿正则对序列化结果做字符串手术,
-// 去掉引号后 \\ 不再是转义,每写回一次反斜杠翻一倍(iluobei/miaomiaowu#126);流式列表里带
+// 去掉引号后 \\ 不再是转义,每写回一次反斜杠翻一倍(Soufock/miaomiaowu#126);流式列表里带
 // 逗号 / 方括号的名字、规则里写的 一 这类正则也会被改坏。
 func RemoveUnicodeEscapeQuotes(yamlContent string) string {
 	return numericQuotesRe.ReplaceAllString(restoreEscapedUnicode(yamlContent), `$1$2: $3`)

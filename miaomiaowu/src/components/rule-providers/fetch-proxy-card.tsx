@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
 
-// 规则集「抓取代理」(iluobei/miaomiaowu#125):主控连不上 GitHub 时,GitHub 上的规则集改从加速站取。
+// 规则集「抓取代理」(Soufock/miaomiaowu#125):主控连不上 GitHub 时,GitHub 上的规则集改从加速站取。
 // 「自动选择」= 抓取时按清单逐个试,用第一个取得到的;也可以固定用某一个,或自己填。
 
 interface ProxyData {
