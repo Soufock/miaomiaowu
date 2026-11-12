@@ -30,7 +30,8 @@ traffic-info-*
 build
 
 internal/web/dist
-data/*
+# 运行期数据目录（docker volume：数据库/日志/下载的 mihomo/备份密钥等），整个目录不入库
+data/
 .vscode
 VERSION.md
 miaomiaowu.db
@@ -40,3 +41,15 @@ VALIDATION_INTEGRATION_PLAN.md
 bin/*
 # go test 里初始化 logger 会在各包目录下生成 data/logs/,不入库
 **/data/logs/
+
+# docker volume：订阅目录只保留 embed.go / .keep.yaml / README，其余为用户数据
+subscribes/*.yaml
+!subscribes/.keep.yaml
+
+# docker volume：规则模板目录只保留内置的两份模板，运行期生成/导入的模板不入库
+rule_templates/*.yaml
+!rule_templates/fake_ip__v3.yaml
+!rule_templates/redirhost__v3.yaml
+
+# 本地构建产物：改用 GitHub Release 资产分发，不再跟踪根目录 server 二进制
+/server
